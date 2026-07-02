@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Android Build"
+  short_description: "Run Windows Gradle builds from WSL"
+  default_prompt: "Use $windows-android-build to compile this Android project in the Windows environment and report the result."
