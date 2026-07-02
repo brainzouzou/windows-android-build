@@ -6,7 +6,16 @@
 
 ## 安装
 
-把仓库 clone 到 Codex skills 目录：
+推荐方式：直接把仓库地址发给 Codex，让 Codex 安装这个 skill：
+
+```text
+安装这个 Codex skill：
+https://github.com/brainzouzou/windows-android-build
+```
+
+Codex 会把仓库安装到 skills 目录。安装后重启 Codex，或者开启新的 Codex 会话，让 skill 元数据重新加载。
+
+手动安装兜底方式：
 
 ```bash
 mkdir -p ~/.codex/skills
@@ -19,8 +28,6 @@ git clone git@github.com:brainzouzou/windows-android-build.git ~/.codex/skills/w
 chmod +x ~/.codex/skills/windows-android-build/scripts/run_windows_gradle.py
 ```
 
-安装后重启 Codex，或者开启新的 Codex 会话，让 skill 元数据重新加载。
-
 ## 环境要求
 
 - Codex 运行在 WSL 内。
@@ -32,7 +39,16 @@ chmod +x ~/.codex/skills/windows-android-build/scripts/run_windows_gradle.py
 
 ## 使用方式
 
-在 Android 项目目录下，让 Codex 使用这个 skill 进行构建验证。脚本调用形式如下：
+安装后，通常不需要每次明确告诉 Codex “使用这个 skill”。当你在 WSL/Windows 挂载路径下的 Android/Gradle 项目里提出构建请求时，Codex 会根据 skill metadata 自动触发，例如：
+
+```text
+帮我编译这个 Android 项目。
+跑一下 assembleDebug。
+跑一下 :app:compileDebugKotlin。
+这个项目在 /mnt/c/...，用 Windows 侧 Gradle 验证一下。
+```
+
+skill 会引导 Codex 调用内置 bridge 脚本，例如：
 
 ```bash
 python3 ~/.codex/skills/windows-android-build/scripts/run_windows_gradle.py --project . assembleDebug --stacktrace

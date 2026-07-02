@@ -8,7 +8,16 @@ Use this when the Android SDK, JDK, Gradle wrapper, emulator, or normal build en
 
 ## Install
 
-Clone this repository into your Codex skills directory:
+Recommended: ask Codex to install this skill from the repository URL:
+
+```text
+Install this Codex skill:
+https://github.com/brainzouzou/windows-android-build
+```
+
+Codex should install the repository into its skills directory and load it in a new session.
+
+Manual fallback:
 
 ```bash
 mkdir -p ~/.codex/skills
@@ -34,7 +43,16 @@ The skill intentionally uses the normal Windows Gradle home, `%USERPROFILE%\.gra
 
 ## Usage
 
-Ask Codex to build or verify an Android project under `/mnt/c/...`. The skill will guide Codex to run:
+After installation, you normally do not need to explicitly ask Codex to use this skill. It should trigger automatically for Android/Gradle build requests in WSL/Windows-mounted projects, for example:
+
+```text
+Build this Android project.
+Run assembleDebug.
+Run :app:compileDebugKotlin.
+Verify this /mnt/c/... Android project with Windows Gradle.
+```
+
+The skill guides Codex to run the bundled bridge script, such as:
 
 ```bash
 python3 ~/.codex/skills/windows-android-build/scripts/run_windows_gradle.py --project . assembleDebug --stacktrace
