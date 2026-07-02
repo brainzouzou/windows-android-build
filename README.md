@@ -1,5 +1,7 @@
 # Windows Android Build Skill
 
+[中文文档](README.zh-CN.md)
+
 Codex skill for running Android/Gradle builds in the Windows environment while Codex is running inside WSL.
 
 Use this when the Android SDK, JDK, Gradle wrapper, emulator, or normal build environment lives on Windows, but Codex edits the project through Linux paths such as `/mnt/c/...`.
